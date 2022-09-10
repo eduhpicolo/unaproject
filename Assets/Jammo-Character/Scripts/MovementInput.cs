@@ -38,9 +38,9 @@ public class MovementInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		anim = this.GetComponent<Animator> ();
-		cam = Camera.main;
-		controller = this.GetComponent<CharacterController> ();
+		//anim = this.GetComponent<Animator> ();
+		//cam = Camera.main;
+		//controller = this.GetComponent<CharacterController> ();
 	}
 	
 	// Update is called once per frame
@@ -51,6 +51,8 @@ public class MovementInput : MonoBehaviour {
         if (isGrounded)
         {
             verticalVel -= 0;
+
+			Jump();
         }
         else
         {
@@ -61,6 +63,16 @@ public class MovementInput : MonoBehaviour {
 
 
     }
+
+	public float jumpForce = 10;
+
+	void Jump()
+	{
+		if (Input.GetKeyDown("space"))
+		{
+			verticalVel = jumpForce;
+		}
+	}
 
     void PlayerMoveAndRotation() {
 		InputX = Input.GetAxis ("Horizontal");
